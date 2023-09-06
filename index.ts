@@ -11,6 +11,7 @@ const GH_APP_ID: string = process.env.GH_APP_ID!;
 const GH_APP_INSTALL_ID: string = process.env.GH_APP_INSTALL_ID!;
 const GH_PRIVATE_KEY: string = process.env.GH_PRIVATE_KEY!;
 const PORT: number = 80
+const SLEEP: number = 30;
 
 // create octokit for communication to GitHub
 const octokit = new Octokit({
@@ -54,6 +55,7 @@ app.post('/', async (req, res) => {
   }
 
   // logic for third party runs
+  await sleep(SLEEP);
 
   // send approval
   await octokit.request(`POST ${req.body['deployment_callback_url']}`, {
@@ -86,3 +88,6 @@ const handle_error = (res: Response, message: string) => {
   res.status(500);
   res.send('500 Server Error');
 }
+
+// sleep function
+const sleep = (s: number) => new Promise(r => setTimeout(r, (s * 1000)));
