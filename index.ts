@@ -40,15 +40,17 @@ app.post('/', async (req, res) => {
     return;
   }
 
+  console.log(req.body);
+
   // send approval
-  await octokit.request("POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule", {
-    owner: "mello-testing",
-    repo: "testing-deployment-protection",
-    run_id: 6097097112,
-    environment_name: "prod",
-    state: "approved",
-    comment: "LGTM"
-  });
+  // await octokit.request("POST /repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule", {
+  //   owner: "mello-testing",
+  //   repo: "testing-deployment-protection",
+  //   run_id: 6097097112,
+  //   environment_name: "prod",
+  //   state: "approved",
+  //   comment: "LGTM"
+  // });
 
   res.send('OK');
 })
