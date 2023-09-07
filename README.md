@@ -5,6 +5,9 @@ This repo was created to test out deployment protection rules.
 - [Workflow file](./.github/workflows/deployment.yml) using `prod` environment
 - TypeScript Example files for responding to webhook events
 
+## Steps
+1. Clone this repository and push it to a new GitHub repository owned by an organization you have ownership of.
+
 ## Documentation
 - [Creating Deployment Protection Rules](https://docs.github.com/en/actions/deployment/protecting-deployments/creating-custom-deployment-protection-rules)
 - [Approving Or Rejcting Deployments](https://docs.github.com/en/actions/deployment/protecting-deployments/creating-custom-deployment-protection-rules#approving-or-rejecting-deployments)
