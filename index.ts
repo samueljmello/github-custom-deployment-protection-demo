@@ -101,7 +101,7 @@ app.post('/', async (req, res) => {
 
   // send approval/rejection
   console.log("Updating deployment status...");
-  await octokit.request(`POST ${req.body['deployment_callback_url']}`, {
+  octokit.request(`POST ${req.body['deployment_callback_url']}`, {
     environment_name: req.body['deployment']['environment'],
     state: MODE,
     comment: "Passed external tests."
