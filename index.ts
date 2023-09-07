@@ -100,6 +100,7 @@ app.post('/', async (req, res) => {
   await sleep(SLEEP);
 
   // send approval/rejection
+  console.log("Updating deployment status...");
   await octokit.request(`POST ${req.body['deployment_callback_url']}`, {
     environment_name: req.body['deployment']['environment'],
     state: MODE,
@@ -107,6 +108,7 @@ app.post('/', async (req, res) => {
   });
 
   // send back OK response
+  console.log("Event complete");
   res.send('OK');
   return;
 })
