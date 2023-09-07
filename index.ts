@@ -81,16 +81,18 @@ app.post('/', async (req, res) => {
   /////////////////////////////////////////////
 
   // post update messages while sleeping (async)
+  octokit.request(`POST ${req.body['deployment_callback_url']}`, {
+    environment_name: req.body['deployment']['environment'],
+    comment: `Sleeping for ${SLEEP} seconds...`
+  });
+  // update status in CLI 
   let current_wait = SLEEP;
-  setInterval(() => {
-    // update status in CLI and GUI
-    let message = `${current_wait} seconds left to sleep...`;
-    console.log(message);
-    octokit.request(`POST ${req.body['deployment_callback_url']}`, {
-      environment_name: req.body['deployment']['environment'],
-      comment: message
-    });
+  let show_timer = setInterval(() => {
+    console.log(`${current_wait} seconds left to sleep...`);
     current_wait -= 1;
+    if (current_wait == 0) {
+      clearInterval(show_timer);
+    }
     return;
   }, 1000);
 
