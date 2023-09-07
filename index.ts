@@ -31,14 +31,18 @@ app.use(
 app.post('/', async (req, res) => {
 
   // validate secret
+  console.log("Validating secret...");
   if (!verify_signature(req)) {
+    console.log("Secret sent was invalid.");
     res.status(401).send("Unauthorized");
     return;
   }
 
   // validate the type of request
+  console.log("Validating payload received...");
   if (req.body['deployment_callback_url'] === undefined) {
-    res.send("Skipping non-deployment webhook.");
+    console.log("Skipping non-deployment webhook.");
+    res.send("OK");
     return;
   }
 
@@ -49,6 +53,7 @@ app.post('/', async (req, res) => {
   }
 
   // validate all secrets are provided
+  console.log("Validating environment variables...");
   if (WEBHOOK_SECRET === undefined 
     || GH_APP_ID == undefined 
     || GH_APP_INSTALL_ID == undefined 
@@ -61,6 +66,7 @@ app.post('/', async (req, res) => {
 
 
   // create octokit for communication to GitHub using GitHub App
+  console.log("Setting up GitHub connection...");
   const octokit = new Octokit({
     authStrategy: createAppAuth,
     auth: {
@@ -70,22 +76,42 @@ app.post('/', async (req, res) => {
     },
   });
 
-  // logic for third party runs
+  /////////////////////////////////////////////
+  // logic for third party runs would go here
+  /////////////////////////////////////////////
+
+  // post update messages while sleeping (async)
+  let current_wait = SLEEP;
+  setInterval(() => {
+    // update status in CLI and GUI
+    let message = `${current_wait} seconds left to sleep...`;
+    console.log(message);
+    octokit.request(`POST ${req.body['deployment_callback_url']}`, {
+      environment_name: req.body['deployment']['environment'],
+      comment: message
+    });
+    current_wait -= 1;
+    return;
+  }, 1000);
+
+  // sleep for same amount of time
   await sleep(SLEEP);
 
-  // send approval
+  // send approval/rejection
   await octokit.request(`POST ${req.body['deployment_callback_url']}`, {
     environment_name: req.body['deployment']['environment'],
     state: MODE,
     comment: "Passed external tests."
   });
 
+  // send back OK response
   res.send('OK');
+  return;
 })
 
 // function to start the servers
 app.listen(PORT, () => {
-    console.log(`The application is listening on port ${PORT}!`);
+  console.log(`The application is listening on port ${PORT}!`);
 })
 
 // verification method
