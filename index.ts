@@ -87,13 +87,13 @@ app.post('/', async (req, res) => {
   });
   // update status in CLI 
   let current_wait = SLEEP;
+  sleep_message(current_wait);
   let show_timer = setInterval(() => {
-    console.log(`${current_wait} seconds left to sleep...`);
     current_wait -= 1;
+    sleep_message(current_wait)
     if (current_wait == 0) {
       clearInterval(show_timer);
     }
-    return;
   }, 1000);
 
   // sleep for same amount of time
@@ -108,7 +108,7 @@ app.post('/', async (req, res) => {
   });
 
   // send back OK response
-  console.log("Event complete");
+  console.log("Process complete.");
   res.send('OK');
   return;
 })
@@ -138,3 +138,7 @@ const handle_error = (res: Response, message: string) => {
 
 // sleep function
 const sleep = (s: number) => new Promise(r => setTimeout(r, (s * 1000)));
+
+const sleep_message = (s: number) => {
+  console.log(`${s} seconds left to sleep...`);
+}
