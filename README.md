@@ -51,7 +51,9 @@ All pushes will now be sent to your repository for any changes you make.
 Ngrok takes internet requests and sends them to your local machine so that the Node.JS application can process them. You will need the provided URL when [creating your GitHub App](#create-a-github-app). See [prerequisites](#prerequisites) for this requirement.
 
 1. Run the command `ngrok http 80` in a separate terminal.
-1. Make note of the forwarding URL (ex: `https://<guid>.ngrok-free.app`).
+1. Make note of the `Forwarding URL` from the console output (ex: `https://<guid>.ngrok-free.app`).
+
+<img src="./images/ngrok.png" style="max-width:500px" />
 
 The Ngrok software will stay running until you stop it.
 
@@ -85,7 +87,11 @@ The Ngrok software will stay running until you stop it.
 ---
 
 ### Run The Webhook Listener
-1. From a new terminal (**NOT** the terminal running Ngrok), `cd` into this repository and run: `npm run listen`
+1. From a new terminal (**NOT** the terminal running Ngrok), `cd` into this repository.
+
+1. Install `npm` dependencies using the command: `npm i`
+
+1. Run the listener software: `npm run listen`
 
 The listener software will listen on port 80 and stay running until you stop it.
 
