@@ -5,6 +5,8 @@ GitHub.com has a great new feature called "[custom deployment protection rules](
 
 The demo here is an attempt to display how the feature works (currently) so that when it goes GA you will have the ability to utilize it yourself.
 
+**NOTE** this demo only works on GitHub organizations supporting Environments.
+
 ## Respository Contents
 - [Workflow file](./.github/workflows/deployment.yml)
 - TypeScript Example files for responding to webhook events
