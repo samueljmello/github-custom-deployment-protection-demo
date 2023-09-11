@@ -53,7 +53,7 @@ Ngrok takes internet requests and sends them to your local machine so that the N
 1. Run the command `ngrok http 80` in a separate terminal.
 1. Make note of the `Forwarding URL` from the console output (ex: `https://<guid>.ngrok-free.app`).
 
-<img src="./images/ngrok.png" style="max-width:500px" />
+    <img src="./images/ngrok.png" style="max-width:500px" />
 
 The Ngrok software will stay running until you stop it.
 
@@ -74,8 +74,12 @@ The Ngrok software will stay running until you stop it.
 
 ### Configure Environment Variables
 1. Create a file called `.env` in the root of this repository.
+
 1. Copy the contents of [.env_example](./.env_example) to the `.env` file.
+
 1. Modify all values replacing with correpsonding ones.
+
+1. Run the `source` command wherever you plan to run the Node application: `source .env`
 
 |variable name|description|
 |---|---|
@@ -93,6 +97,8 @@ The Ngrok software will stay running until you stop it.
 
 1. Run the listener software: `npm run listen`
 
+    <img src="./images/listener.png" style="max-width:300px">
+
 The listener software will listen on port 80 and stay running until you stop it.
 
 ---
@@ -109,7 +115,7 @@ The listener software will listen on port 80 and stay running until you stop it.
 
 1. Click the `Run Workflow` button, leave `Main` branch selected, and click the green `Run Workflow` button.
 
-<img src="./images/run_workflow_example.png" style="max-width:300px" />
+    <img src="./images/run_workflow_example.png" style="max-width:300px" />
 
 ---
 
