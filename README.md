@@ -122,7 +122,11 @@ The listener software will listen on port 80 and stay running until you stop it.
 ### Results
 This should result in the workflow pausing to wait for approval. You should also see your Ngrok terminal take a POST payload and your Node terminal begin outputting various details about what it's currently doing.
 
-The way that the application is configured is to sleep for 30 seconds and then approve the deployment. You could add logic or communication to third-party services by simply adding it to [line 80 of index.ts](./index.ts#80). 
+The way that the application is configured is to sleep for 30 seconds and then approve the deployment. You could add logic or communication to third-party services by simply adding it to [line 80 of index.ts](./index.ts#L80). 
+
+See the below diagram for how the communication flow works in this demo.
+
+<img src="./images/diagram.png" style="max-width:75%" />
 
 ---
 
