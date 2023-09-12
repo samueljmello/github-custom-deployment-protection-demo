@@ -52,19 +52,6 @@ app.post('/', async (req, res) => {
     return handle_error(res, "No deployment environment provided in payload.");
   }
 
-  // validate all secrets are provided
-  console.log("Validating environment variables...");
-  if (WEBHOOK_SECRET === undefined 
-    || GH_APP_ID == undefined 
-    || GH_APP_INSTALL_ID == undefined 
-    || GH_PRIVATE_KEY == undefined) {
-    return handle_error(
-      res, 
-      "Please make sure all environment variables are provided. Some are missing."
-    );
-  }
-
-
   // create octokit for communication to GitHub using GitHub App
   console.log("Setting up GitHub connection...");
   const octokit = new Octokit({
@@ -115,6 +102,18 @@ app.post('/', async (req, res) => {
 
 // function to start the servers
 app.listen(PORT, () => {
+
+  // validate all secrets are provided
+  console.log("Validating environment variables...");
+  if (WEBHOOK_SECRET === undefined 
+    || GH_APP_ID == undefined 
+    || GH_APP_INSTALL_ID == undefined 
+    || GH_PRIVATE_KEY == undefined) {
+    console.log("ERROR: Please make sure all environment variables are provided. Some are missing.");
+    process.exit(1);
+  }
+
+  // output that it's working
   console.log(`The application is listening on port ${PORT}!`);
 })
 
