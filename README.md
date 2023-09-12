@@ -71,6 +71,8 @@ The Ngrok software will stay running until you stop it (open another terminal to
 ---
 
 ### Configure Environment Variables
+
+#### Bash:
 1. Create a file called `.env` in the root of this repository.
 
 1. Copy the contents of [.env_example](./.env_example) to the `.env` file.
@@ -78,6 +80,19 @@ The Ngrok software will stay running until you stop it (open another terminal to
 1. Modify all lines replacing with real values.
 
 1. Run the `source` command wherever you plan to run the Node application: `source .env`
+
+
+#### PowerShell:
+1. Create a file called `.env.ps1` in the root of this repository.
+
+1. Copy the contents of [.env_example.ps1](./.env_example.ps1) to the `.env.ps1` file.
+
+1. Modify all lines replacing with real values.
+
+1. Run the script wherever you plan to run the Node application: `./.env.ps1`
+
+
+#### Variable Descriptions:
 
 |variable name|description|
 |---|---|
