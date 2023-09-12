@@ -5,8 +5,6 @@ GitHub.com has a great new feature called "[custom deployment protection rules](
 
 The demo here is an attempt to display how the feature works (currently) so that when it goes GA you will have the ability to utilize it yourself.
 
-**NOTE** this demo only works on GitHub organizations supporting Environments.
-
 ## Respository Contents
 - [Workflow file](./.github/workflows/deployment.yml)
 - TypeScript Example files for responding to webhook events
@@ -18,7 +16,7 @@ The demo here is an attempt to display how the feature works (currently) so that
 - A [Bash](https://opensource.com/resources/what-bash)-compatible or [PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3) (>= v6) terminal
 - [Node.JS](https://nodejs.org/en/download) (tested on v20.5.1) installed and available in your path (runs the webhook listening software)
 - [Ngrok](https://dashboard.ngrok.com/get-started/setup) installed and configured (handles receiving the webhook to the webhook listening software)
-- Organization owner access
+- Organization owner access (only required when setting up in an org vs a private namespace)
 
 ## Steps
 Follow all the steps below to see this demo in action.
@@ -104,7 +102,7 @@ The listener software will listen on port 80 and stay running until you stop it.
 ---
 
 ### Configure The Repository To Use Your Custom Deployment Protection Rules
-1. Follow the [instructions here](https://docs.github.com/en/actions/deployment/protecting-deployments/configuring-custom-deployment-protection-rules#enabling-custom-deployment-protection-rules-for-the-environment) to enable the custom deployment protection rules app on your repository.
+1. Follow the [instructions here](https://docs.github.com/en/actions/deployment/protecting-deployments/configuring-custom-deployment-protection-rules#enabling-custom-deployment-protection-rules-for-the-environment) to enable the custom deployment protection rules app on your repository. This step requires you to edit the `Environment` from [the previous step](#set-up-an-environment).
 
 ---
 
