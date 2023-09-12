@@ -36,7 +36,7 @@ In order to test out the functionality here, you will need to set up and configu
 
 1. Change the repository remote to your created repository from step #1 using the following command (replace `<remote-url>` with your own):<br/> `git remote set-url origin <remote-url>`
 
-All pushes will now be sent to your repository for any changes you make.
+All pushes will now be sent to your repository for any changes you make. This will not trigger the workflow, as it's manual.
 
 ---
 
@@ -55,7 +55,7 @@ Ngrok takes internet requests and sends them to your local machine so that the N
 
     <img src="./images/ngrok.png" style="max-width:500px" />
 
-The Ngrok software will stay running until you stop it.
+The Ngrok software will stay running until you stop it (open another terminal to continue).
 
 ---
 
@@ -77,7 +77,7 @@ The Ngrok software will stay running until you stop it.
 
 1. Copy the contents of [.env_example](./.env_example) to the `.env` file.
 
-1. Modify all values replacing with correpsonding ones.
+1. Modify all lines replacing with real values.
 
 1. Run the `source` command wherever you plan to run the Node application: `source .env`
 
@@ -122,7 +122,9 @@ The listener software will listen on port 80 and stay running until you stop it.
 ### Results
 This should result in the workflow pausing to wait for approval. You should also see your Ngrok terminal take a POST payload and your Node terminal begin outputting various details about what it's currently doing.
 
-The way that the application is configured is to sleep for 30 seconds and then approve the deployment. You could add logic or communication to third-party services by simply adding it to [line 80 of index.ts](./index.ts#L80). 
+The way that the application is configured is to sleep for 30 seconds and then approve the deployment.
+
+You could add logic or communication to third-party services by simply adding it to [line 80 of index.ts](./index.ts#L80). 
 
 See the below diagram for how the communication flow works in this demo.
 
