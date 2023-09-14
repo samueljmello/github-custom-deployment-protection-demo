@@ -1,5 +1,5 @@
 # Custom Deployment Protection Rules Demo
-GitHub.com has a great new feature called "[custom deployment protection rules](https://docs.github.com/en/actions/deployment/protecting-deployments/creating-custom-deployment-protection-rules)" (currently in beta) which allows you to receive webhooks whenever a deployment is triggered. This works in tandem with [Environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) to provides gated mechanisms for preventing deployments when not authorized.
+GitHub.com has a great new feature called "[custom deployment protection rules](https://docs.github.com/en/actions/deployment/protecting-deployments/creating-custom-deployment-protection-rules)" (currently in beta) which allows you to receive webhooks whenever a deployment is triggered. This works in tandem with [Environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) to provide gated mechanisms for preventing deployments when not authorized.
 
 <img src="https://github.blog/wp-content/uploads/2023/04/image-13.png?resize=1600%2C850" style="max-width:50%" /><br/>
 
